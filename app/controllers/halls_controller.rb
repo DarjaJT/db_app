@@ -12,7 +12,7 @@ class HallsController < ApplicationController
   end
 
   def create
-    @hall = Hall.new(hall_params)
+    @hall = current_user.halls.new(hall_params)
     if @hall.save
       flash[:success] = "Hall added!"
       redirect_to halls_all_url
@@ -40,7 +40,7 @@ class HallsController < ApplicationController
 
     def correct_user # requirement of the right user
       @hall = current_user.halls.find_by(id: params[:id])
-      redirect_to(root_url) unless current_user?(@hall) # current_user? - sessions_helper.rb
+      redirect_to root_url if @hall.nil?
     end
 
     def signed_in_user # srequirement to be logged in

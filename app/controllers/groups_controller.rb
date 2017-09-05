@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.new(group_params)
     if @group.save
       flash[:success] = "Group added!"
       redirect_to groups_all_url
@@ -29,6 +29,18 @@ class GroupsController < ApplicationController
 
     def group_params # parameters are required
       params.require(:group).permit(:name)
+    end
+
+    def correct_user
+      @group = current_user.groups.find_by(id: params[:id])
+      redirect_to root_url if @group.nil?
+    end
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
     end
 
 

@@ -7,7 +7,7 @@
       <li>
         <%= i + 1 %>.
         <%= link_to group.name, '#' %>
-        <% if current_user.admin? && signed_in? %>
+        <% if current_user?(group.user) || current_user.admin? && signed_in? %>
             <%= link_to "delete", group, method: :delete, data: { confirm: "You sure?" }, title: group.name %>
         <% end %>
       </li>
