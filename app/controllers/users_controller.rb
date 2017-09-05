@@ -51,26 +51,26 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params # parameters are required
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  # Before filters
-
-  def signed_in_user # srequirement to be logged in
-    unless signed_in?
-      store_location # sessions_helper.rb
-      redirect_to signin_url, notice: "Please sign in."
+    def user_params # parameters are required
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-  end
 
-  def correct_user # requirement of the right user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user) # current_user? - sessions_helper.rb
-  end
+    # Before filters
 
-  def admin_user # Access is only open to the administrator
-    redirect_to(root_url) unless current_user.admin?
-  end
+    def signed_in_user # srequirement to be logged in
+      unless signed_in?
+        store_location # sessions_helper.rb
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_user # requirement of the right user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user) # current_user? - sessions_helper.rb
+    end
+
+    def admin_user # Access is only open to the administrator
+      redirect_to(root_url) unless current_user.admin?
+    end
 
 end
