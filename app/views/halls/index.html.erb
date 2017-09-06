@@ -1,0 +1,16 @@
+<% provide(:title, 'All halls') %>
+<h1>All halls</h1>
+
+
+<ul class="view">
+  <% @halls.each_with_index do |hall, i| %>
+    <li>
+      <%= i + 1 %>.
+      <%= link_to hall.name, '#' %>
+      <% if current_user?(hall.user) || current_user.admin? && signed_in? %>
+        | <%= link_to "delete", hall, method: :delete, data: { confirm: "You sure?" }, title: hall.name %>
+      <% end %>
+    </li>
+<% end %>
+</ul>
+

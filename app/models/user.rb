@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  # has_secure_password
+
+  has_many :halls
+  has_many :groups
+  has_many :halls, dependent: :destroy # Пользователь имеет_много залов.
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }

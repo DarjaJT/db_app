@@ -1,0 +1,29 @@
+<% provide(:title, 'Add group to hall') %>
+<h1>Add group to hall</h1>
+
+<div class="row">
+ <div class="span6 offset3">
+   <%= form_for @hall_group do |f| %>
+     <%= render 'shared/error_messages', object: f.object %>
+       <%= f.label :hall_id %>
+       <%= f.select(:hall_id) do %>
+         <%= content_tag(:option ) %>
+         <% @halls.each do |hall| -%>
+           <%= content_tag(:option, hall.name, value: hall.id) %>
+         <% end %>
+       <% end %>
+
+       <%= f.label :group_id %>
+       <%= f.select(:group_id) do %>
+         <%= content_tag(:option ) %>
+         <% @groups.each do |group| -%>
+           <%= content_tag(:option, group.name, value: group.id) %>
+         <% end %>
+      <% end %>
+
+       <%#= f.collection_select(:hall_id, Hall.all, :id, :name) %>
+
+     <%= f.submit "Add group to hall", class: "btn btn-large btn-primary" %>
+   <% end %>
+ </div>
+</div>

@@ -1,0 +1,2 @@
+module HallGroupsHelper
+end
