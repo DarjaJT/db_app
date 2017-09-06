@@ -1,0 +1,19 @@
+<% provide(:title, 'Add group to hall') %>
+<h1>Add group to hall</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @hall_groups do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <% @halls.each_with_index do |hall, i| %>
+        <%= select(hall.name) %>
+        <% end %>
+
+
+
+
+        <%= f.submit "Add group to hall", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

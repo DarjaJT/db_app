@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # get 'groups/new'
-  # get 'groups/index'
+
+  # get 'hall_groups/new'
+  # get 'hall_groups/index'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy] # sessions_path
@@ -25,6 +26,10 @@ Rails.application.routes.draw do
   get '/add_group', to: 'groups#new', as: :add_group
   delete '/groups/:id', to: 'groups#destroy', as: :group
   get '/groups/:id', to: 'groups#destroy', as: :group_delete
+
+  get '/hall_groups', to: 'hall_groups#index', as: :hall_groups_all
+  post '/add_hall_groups', to: 'hall_groups#create', as: :hall_groups
+  get '/add_hall_groups', to: 'hall_groups#new', as: :add_hall_group
 
 
 end
