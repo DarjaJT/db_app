@@ -3,5 +3,7 @@ class Hall < ApplicationRecord
   has_many :hall_groups
   has_many :halls, :through => :hall_groups
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: { message: "Field must not be empty!"},
+            length: { maximum: 50, too_long: "%{count} it's too long!",  minimum: 3, too_short: "%{count} it's too short!" }
+  validates :name, uniqueness: { message: "Such a hall is already there"}
 end

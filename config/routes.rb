@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get '/hall_groups', to: 'hall_groups#index', as: :hall_groups_all
   post '/add_hall_groups', to: 'hall_groups#create', as: :hall_groups
   get '/add_hall_groups', to: 'hall_groups#new', as: :add_hall_group
+  delete '/hall_groups/:id', to: 'hall_groups#destroy', as: :hall_group
+  get '/hall_groups/:id', to: 'hall_groups#destroy', as: :hall_group_delete
 
 
 end

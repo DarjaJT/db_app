@@ -41,6 +41,7 @@ class HallsController < ApplicationController
     def correct_user # requirement of the right user
       @hall = current_user.halls.find_by(id: params[:id])
       redirect_to root_url if @hall.nil?
+        # redirect_to(root_url) unless current_user?(@hall) # current_user? - sessions_helper.rb
     end
 
     def signed_in_user # srequirement to be logged in
