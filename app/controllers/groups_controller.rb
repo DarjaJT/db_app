@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
 
     def correct_user
       @group = current_user.groups.find_by(id: params[:id])
-      redirect_to root_url if @group.nil?
+      redirect_to groups_all_url, notice: "Something went wrong."if @group.nil?
     end
 
     def signed_in_user

@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
 
-
   get '/halls', to: 'halls#index', as: :halls_all
   post '/add_hall', to: 'halls#create', as: :halls
   get '/add_hall', to: 'halls#new', as: :add_hall
@@ -32,6 +31,8 @@ Rails.application.routes.draw do
   get '/add_hall_groups', to: 'hall_groups#new', as: :add_hall_group
   delete '/hall_groups/:id', to: 'hall_groups#destroy', as: :hall_group
   get '/hall_groups/:id', to: 'hall_groups#destroy', as: :hall_group_delete
+
+  get '/trainer_form', to: 'users#trainer_add', as: :trainer_add
 
 
 end

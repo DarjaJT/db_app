@@ -1,0 +1,5 @@
+<h3>Trainer</h3>
+<%= label_tag(:qualif, "Qualification") %>
+<%= select_tag(:qualif, options_for_select( Trainer::QUALIF_SELECT ),
+                        name: 'user[trainer_attributes][qualif]') %>
+

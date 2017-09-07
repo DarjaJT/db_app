@@ -15,3 +15,27 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on('turbolinks:load', function () {
+
+    // If the checkbox > 0 is selected, the button is visible otherwise invisible
+    $('input[type=checkbox]').bind('click' , function() {
+        if ($('.span6').find('input.checkboxes:checked').length > 0) {
+            document.getElementById('btn_create_account').style.display = 'block';
+        } else {
+            document.getElementById('btn_create_account').style.display = 'none';
+        }
+    });
+
+    // if the checkbox trainer is selected
+    $('#trainer').on("click", function () {
+      if($(this).attr('id')==$('input:checkbox:checked').attr('id')){
+        $.ajax({
+            type: "get",
+            url: "/trainer_form"
+         });
+      }else $('#checked').html('');
+    });
+
+});

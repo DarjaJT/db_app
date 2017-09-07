@@ -5,8 +5,20 @@
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
         <%= render 'fields', f: f %>
+
+      <div class="checkboxes_all">
+        <%= check_box_tag(:trainer, '1', false, class: 'checkboxes')%>
+        <%= label_tag(:trainer, "Trainer") %>
+
+        <%= check_box_tag(:sportsman, '2', false, class: 'checkboxes')%>
+        <%= label_tag(:sportsman, "Sportsman") %>
+      </div>
+
+      <div id="checked"></div>
+
+      <div id="btn_create_account">
         <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>
-

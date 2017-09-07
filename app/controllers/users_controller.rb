@@ -10,6 +10,11 @@ class UsersController < ApplicationController
 
   def new # add new user
     @user = User.new
+    @user.build_trainer # sends nested attributes to the user
+    @trainer = Trainer.new
+  end
+
+  def trainer_add # AJAX
   end
 
   def show # show user profile
@@ -29,10 +34,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @trainer = @user.trainer
   end
 
   def update
     @user = User.find(params[:id])
+    @trainer = @user.trainer
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -52,7 +59,7 @@ class UsersController < ApplicationController
   private
 
     def user_params # parameters are required
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, trainer_attributes: [:qualif])
     end
 
     # Before filters

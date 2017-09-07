@@ -1,24 +1,33 @@
-      Prefix Verb   URI Pattern               Controller#Action
-  groups_new GET    /groups/new(.:format)     groups#new
-groups_index GET    /groups/index(.:format)   groups#index
-       users GET    /users(.:format)          users#index
-             POST   /users(.:format)          users#create
-    new_user GET    /users/new(.:format)      users#new
-   edit_user GET    /users/:id/edit(.:format) users#edit
-        user GET    /users/:id(.:format)      users#show
-             PATCH  /users/:id(.:format)      users#update
-             PUT    /users/:id(.:format)      users#update
-             DELETE /users/:id(.:format)      users#destroy
-    sessions POST   /sessions(.:format)       sessions#create
- new_session GET    /sessions/new(.:format)   sessions#new
-     session DELETE /sessions/:id(.:format)   sessions#destroy
-        root GET    /                         static_pages#home
-        test GET    /test(.:format)           static_pages#test
-      signup GET    /signup(.:format)         users#new
-      signin GET    /signin(.:format)         sessions#new
-     signout DELETE /signout(.:format)        sessions#destroy
-   halls_all GET    /halls(.:format)          halls#index
-       halls POST   /add_hall(.:format)       halls#create
-    add_hall GET    /add_hall(.:format)       halls#new
-        hall DELETE /halls/:id(.:format)      halls#destroy
- hall_delete GET    /halls/:id(.:format)      halls#destroy
+           Prefix Verb   URI Pattern                Controller#Action
+            users GET    /users(.:format)           users#index
+                  POST   /users(.:format)           users#create
+         new_user GET    /users/new(.:format)       users#new
+        edit_user GET    /users/:id/edit(.:format)  users#edit
+             user GET    /users/:id(.:format)       users#show
+                  PATCH  /users/:id(.:format)       users#update
+                  PUT    /users/:id(.:format)       users#update
+                  DELETE /users/:id(.:format)       users#destroy
+         sessions POST   /sessions(.:format)        sessions#create
+      new_session GET    /sessions/new(.:format)    sessions#new
+          session DELETE /sessions/:id(.:format)    sessions#destroy
+             root GET    /                          static_pages#home
+             test GET    /test(.:format)            static_pages#test
+           signup GET    /signup(.:format)          users#new
+           signin GET    /signin(.:format)          sessions#new
+          signout DELETE /signout(.:format)         sessions#destroy
+        halls_all GET    /halls(.:format)           halls#index
+            halls POST   /add_hall(.:format)        halls#create
+         add_hall GET    /add_hall(.:format)        halls#new
+             hall DELETE /halls/:id(.:format)       halls#destroy
+      hall_delete GET    /halls/:id(.:format)       halls#destroy
+       groups_all GET    /groups(.:format)          groups#index
+           groups POST   /add_group(.:format)       groups#create
+        add_group GET    /add_group(.:format)       groups#new
+            group DELETE /groups/:id(.:format)      groups#destroy
+     group_delete GET    /groups/:id(.:format)      groups#destroy
+  hall_groups_all GET    /hall_groups(.:format)     hall_groups#index
+      hall_groups POST   /add_hall_groups(.:format) hall_groups#create
+   add_hall_group GET    /add_hall_groups(.:format) hall_groups#new
+       hall_group DELETE /hall_groups/:id(.:format) hall_groups#destroy
+hall_group_delete GET    /hall_groups/:id(.:format) hall_groups#destroy
+      trainer_add GET    /trainer_form(.:format)    users#new

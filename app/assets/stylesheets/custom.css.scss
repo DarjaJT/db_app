@@ -53,6 +53,11 @@ h2 {
   color: $grayLight;
 }
 
+h3 {
+  font-size: 2em;
+  text-align: center;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -181,4 +186,13 @@ input {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+
+#btn_create_account{
+  display: block; display: none;
+}
+
+.checkboxes_all{
+
 }

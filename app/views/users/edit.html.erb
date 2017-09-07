@@ -5,6 +5,17 @@
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
         <%= render 'fields', f: f %>
+
+      <% if @trainer %>
+        <h3>Trainer</h3>
+        <%= f.fields_for :trainer do |ff| %>
+          <%= ff.label :qualif, value:"Qualification" %>
+          <%= ff.select :qualif, options_for_select(
+                                      Trainer::QUALIF_SELECT, # QUALIF_SELECT переменная константа
+                                      @trainer.qualif ) %>
+        <% end %>
+      <% end %>
+
         <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
