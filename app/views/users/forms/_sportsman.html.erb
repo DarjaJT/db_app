@@ -1,0 +1,17 @@
+<h3>Sportsman</h3>
+
+<%= label_tag :address %>
+<%= text_field_tag('user[sportsman_attributes][address]') %>
+
+
+<%= label_tag :halls %>
+<% halls_array = @halls.map { |hall| [hall.name, hall.id] }.unshift([]) %> <!-- unshift - ставит элемент в начало массива-->
+<%= select_tag :halls, options_for_select(halls_array)  %>
+
+<%= label_tag :group_id, 'Groups in the hall' %>
+<%= select_tag :group_id, nil, { name: 'user[sportsman_attributes][group_id]' } %>
+
+<%= label_tag :trainer_id, 'Trainer in the group' %>
+<%= select_tag :trainer_id, nil, { name: 'user[sportsman_attributes][trainer_id]' } %>
+
+

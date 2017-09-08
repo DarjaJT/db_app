@@ -194,5 +194,12 @@ input {
 }
 
 .checkboxes_all{
-
+  label{
+    float: left;
+    margin-right: 20px;
+    margin-left: 2px;
+  }
+  .checkboxes{
+    float: left;
+  }
 }

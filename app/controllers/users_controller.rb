@@ -11,15 +11,41 @@ class UsersController < ApplicationController
   def new # add new user
     @user = User.new
     @user.build_trainer # sends nested attributes to the user
+    @user.build_sportsman # sends nested attributes to the user
     @trainer = Trainer.new
+    @sportsman = Sportsman.new
   end
 
   def trainer_add # AJAX
   end
 
+  def sportsman_add # AJAX
+    @halls = Hall.all
+  end
+
+  def hall_groups_options # AJAX
+    #@groups = Hall.find_by_id(params[:hall_id]).groups
+    @groups = Group.joins(:halls).where(halls: { id: params[:hall_id] })
+  end
+
+  def group_trainers_options # AJAX
+    @trainers = Trainer.joins(:groups).where(groups: { id: params[:group_id] })
+  end
+
   def show # show user profile
     @user = User.find(params[:id])
   end
+
+  # def filtered_users
+  #   type = params[:type]
+  #
+  #   case type
+  #     when 'trainer'
+  #       @users = User.joins(:trainer)
+  #     when 'sportsman'
+  #       @users = User.join
+  #   end
+  # end
 
   def create # registration form processing
     @user = User.new(user_params)
@@ -35,11 +61,13 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @trainer = @user.trainer
+    @sportsman = @user.sportsman
   end
 
   def update
     @user = User.find(params[:id])
     @trainer = @user.trainer
+    @sportsman = @user.sportsman
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -59,7 +87,10 @@ class UsersController < ApplicationController
   private
 
     def user_params # parameters are required
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, trainer_attributes: [:qualif])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                    trainer_attributes: [:qualif],
+                                    sportsman_attributes: [:address, :group_id, :trainer_id]
+      )
     end
 
     # Before filters

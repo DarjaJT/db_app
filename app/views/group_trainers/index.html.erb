@@ -1,0 +1,16 @@
+<% provide(:title, 'All Group Trainers') %>
+<h1>All Group Trainers</h1>
+
+
+<ul class="view">
+  <% @group_trainers.each_with_index do |group_trainer, i| %>
+      <li>
+        <%= i + 1 %>.
+        <%= link_to group_trainer.trainer.user.name, '#' %>
+        <%= link_to group_trainer.group.name, '#' %>
+        <% if current_user?(group_trainer.group.user) ||current_user.admin? && signed_in? %>
+            | <%= link_to "delete", group_trainer, method: :delete, data: { confirm: "You sure?" }, title: group_trainer.id %>
+        <% end %>
+      </li>
+  <% end %>
+</ul>

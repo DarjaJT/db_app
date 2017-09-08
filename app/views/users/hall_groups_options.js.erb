@@ -1,0 +1,2 @@
+<% hall_groups_array = @groups.map { |group| [group.name, group.id] }.unshift([])  %>
+$('select#group_id').html('<%= j options_for_select(hall_groups_array) %>')

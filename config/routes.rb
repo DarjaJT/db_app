@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
-  # get 'hall_groups/new'
-  # get 'hall_groups/index'
-
   resources :users
-  resources :sessions, only: [:new, :create, :destroy] # sessions_path
+  resources :sessions, only: [:new, :create, :update, :destroy] # sessions_path
 
 
   root  'static_pages#home'
@@ -32,7 +29,16 @@ Rails.application.routes.draw do
   delete '/hall_groups/:id', to: 'hall_groups#destroy', as: :hall_group
   get '/hall_groups/:id', to: 'hall_groups#destroy', as: :hall_group_delete
 
+  get '/group_trainers', to: 'group_trainers#index', as: :group_trainers_all
+  post '/add_group_trainers', to: 'group_trainers#create', as: :group_trainers
+  get '/add_group_trainers', to: 'group_trainers#new', as: :add_group_trainer
+  delete '/group_trainer/:id', to: 'group_trainers#destroy', as: :group_trainer
+  get '/group_trainer/:id', to: 'group_trainers#destroy', as: :group_trainer_delete
+  get '/group_trainers_options/:group_id', to: 'users#group_trainers_options', as: :group_trainers_options
+
   get '/trainer_form', to: 'users#trainer_add', as: :trainer_add
+  get '/sportsman_form', to: 'users#sportsman_add', as: :sportsman_add
+  get '/hall_groups_options/:hall_id', to: 'users#hall_groups_options', as: :hall_groups_options
 
 
 end

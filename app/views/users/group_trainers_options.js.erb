@@ -1,0 +1,2 @@
+<% group_trainers_array = @trainers.map { |trainer| [trainer.user.name, trainer.id] }.unshift([])  %>
+$('select#trainer_id').html('<%= j options_for_select(group_trainers_array) %>')

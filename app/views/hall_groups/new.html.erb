@@ -7,10 +7,10 @@
      <%= render 'shared/error_messages', object: f.object %>
        <%= f.label :hall_id %>
        <%= f.select(:hall_id) do %>
-         <%= content_tag(:option ) %>
-         <% @halls.each do |hall| -%>
-           <%= content_tag(:option, hall.name, value: hall.id) %>
-         <% end %>
+           <%= content_tag(:option ) %>
+           <% @halls.each do |hall| -%>
+               <%= content_tag(:option, hall.name, value: hall.id) %>
+           <% end %>
        <% end %>
 
        <%= f.label :group_id %>

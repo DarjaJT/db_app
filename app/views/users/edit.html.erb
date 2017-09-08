@@ -4,7 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-        <%= render 'fields', f: f %>
+      <%= render 'fields', f: f %>
 
       <% if @trainer %>
         <h3>Trainer</h3>
@@ -16,7 +16,15 @@
         <% end %>
       <% end %>
 
-        <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <% if @sportsman %>
+        <h3>Sportsman</h3>
+        <%= f.fields_for :sportsman do |ff| %>
+          <%= ff.label :address, value:"Address" %>
+          <%= ff.text_field :address %>
+        <% end %>
+      <% end %>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
